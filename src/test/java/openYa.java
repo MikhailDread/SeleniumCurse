@@ -19,7 +19,10 @@ public class openYa {
 
         @Test
         public void openYa() throws Exception {
-            driver.get("https://yandex.ru/");
+            driver.get("http://localhost/litecart/admin/");
+            driver.findElement(By.name("username")).sendKeys("admin");
+            driver.findElement(By.name("password")).sendKeys("admin");
+            driver.findElement(By.name("login")).click();
         }
 
         @AfterClass(alwaysRun = true)
