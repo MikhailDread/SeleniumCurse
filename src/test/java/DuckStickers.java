@@ -7,6 +7,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -23,10 +24,17 @@ public class DuckStickers {
 
     @Test
     public void openYa() throws Exception {
-        driver.get("http://localhost/litecart/en/");
-        List <WebElement> list = driver.findElements(By.cssSelector("ul.listing-wrapper products"));
-        for(int i = 0; i < list.size(); i++){
-            driver.findElement(By.cssSelector("li.product column shadow hover-light:nth-child(" + i + ")"));
+        driver.get("http://localhost/litecart");
+        ArrayList<WebElement> uls=(ArrayList<WebElement>) driver.findElements(By.cssSelector("ul.listing-wrapper.products"));
+        for(WebElement ul:uls)
+        {
+            ArrayList<WebElement> lis=(ArrayList<WebElement>) ul.findElements(By.cssSelector("li"));
+            for(WebElement li:lis)
+            {
+                List<WebElement> stickers=li.findElements(By.cssSelector("div.sticker"));
+                System.out.println(li.findElement(By.cssSelector("a.link")).getAttribute("title")+" Стикеры: "+stickers.size());
+                assert (stickers.size()==1);
+            }
         }
     }
 
