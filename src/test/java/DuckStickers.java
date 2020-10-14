@@ -25,10 +25,10 @@ public class DuckStickers {
     @Test
     public void openYa() throws Exception {
         driver.get("http://localhost/litecart");
-        ArrayList<WebElement> uls=(ArrayList<WebElement>) driver.findElements(By.cssSelector("ul.listing-wrapper.products"));
+        List<WebElement> uls = driver.findElements(By.cssSelector("ul.listing-wrapper.products"));
         for(WebElement ul:uls)
         {
-            ArrayList<WebElement> lis=(ArrayList<WebElement>) ul.findElements(By.cssSelector("li"));
+            List<WebElement> lis = ul.findElements(By.cssSelector("li"));
             for(WebElement li:lis)
             {
                 List<WebElement> stickers=li.findElements(By.cssSelector("div.sticker"));
