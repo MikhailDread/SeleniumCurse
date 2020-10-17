@@ -76,7 +76,32 @@ public class CountryTest {
     }
 
     @Test
-    public void ZoneTest() {
+    public void ZoneTest() throws InterruptedException {
+        driver.get("http://localhost/litecart/admin/?app=geo_zones&doc=geo_zones");
+        driver.findElement(By.name("username")).sendKeys("admin");
+        driver.findElement(By.name("password")).sendKeys("admin");
+        driver.findElement(By.name("login")).click();
+        List<String> table = new ArrayList<>();
+        List<WebElement> list = driver.findElements(By.cssSelector("table.dataTable tr.row"));
+        List<WebElement> zone = new ArrayList<>();
+        List<String> unsortedZone = new ArrayList<>();
+        List<String> sortedZone = new ArrayList<>();
+        for(WebElement k : list){
+            table.add(k.findElement(By.cssSelector("td:nth-child(3) a")).getText());
+        }
+        zoneZ:for(String e : table){
+            List<WebElement> list1 = driver.findElements(By.cssSelector("table.dataTable tr.row"));
+            for(WebElement k : list1){
+                k.findElement(By.cssSelector("td:nth-child(3) a")).click();
+                zone = driver.findElements(By.cssSelector("table#table-zones.dataTable tr:not(.header)>td:nth-child(3)"));
+                zone.forEach(z->unsortedZone.add(z.getText()));
+                zone.forEach(z->sortedZone.add(z.getText()));
+                driver.get("http://localhost/litecart/admin/?app=countries&doc=countries");
+                continue zoneZ;
+            }
+        }
+
+        Assert.assertEquals(sortedZone, unsortedZone);
 
     }
 
