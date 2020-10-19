@@ -28,9 +28,9 @@ public class CheckPage {
         String salePrice = element.findElement(By.cssSelector("strong.campaign-price")).getText();
         String saleColor = element.findElement(By.cssSelector("strong.campaign-price")).getCssValue("color");
         String regularColor = element.findElement(By.cssSelector("s.regular-price")).getCssValue("color");
-        Dimension saleSize = element.findElement(By.cssSelector("strong.campaign-price")).getSize();
+        String saleSize = element.findElement(By.cssSelector("s.regular-price")).getCssValue("font-size");
         Point saleLocation = element.findElement(By.cssSelector("strong.campaign-price")).getLocation();
-        Dimension regularSize = element.findElement(By.cssSelector("s.regular-price")).getSize();
+        String regularSize = element.findElement(By.cssSelector("s.regular-price")).getCssValue("font-size");
         Point regularLocation = element.findElement(By.cssSelector("s.regular-price")).getLocation();
         
         DuckModel duckModelInMainPage = new DuckModel().withName(productName).withSalePrice(salePrice).
@@ -46,8 +46,8 @@ public class CheckPage {
         String regularPriceIn = elementIn.findElement(By.xpath("//s[@class='regular-price']")).getText();
         String saleColorIn = elementIn.findElement(By.xpath("//strong[@class='campaign-price']")).getCssValue("color");
         String regularColorIn = elementIn.findElement(By.xpath("//s[@class='regular-price']")).getCssValue("color");
-        Dimension saleSizeIn = elementIn.findElement(By.xpath("//strong[@class='campaign-price']")).getSize();
-        Dimension regularSizeIn = elementIn.findElement(By.xpath("//s[@class='regular-price']")).getSize();
+        String saleSizeIn = elementIn.findElement(By.xpath("//strong[@class='campaign-price']")).getCssValue("font-size");
+        String regularSizeIn = elementIn.findElement(By.xpath("//s[@class='regular-price']")).getCssValue("font-size");
         Point saleLocationIn = elementIn.findElement(By.xpath("//strong[@class='campaign-price']")).getLocation();
         Point regularLocationIn = elementIn.findElement(By.xpath("//s[@class='regular-price']")).getLocation();
 

@@ -1,4 +1,3 @@
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 
 import java.util.Objects;
@@ -9,8 +8,8 @@ public class DuckModel {
     String name;
     String saleColor;
     String regularColor;
-    Dimension saleSize;
-    Dimension regularSize;
+    String saleSize;
+    String regularSize;
     Point saleLocation;
     Point regularLocation;
 
@@ -59,20 +58,20 @@ public class DuckModel {
         return this;
     }
 
-    public Dimension getSaleSize() {
+    public String getSaleSize() {
         return saleSize;
     }
 
-    public DuckModel withSaleSize(Dimension saleSize) {
+    public DuckModel withSaleSize(String saleSize) {
         this.saleSize = saleSize;
         return this;
     }
 
-    public Dimension getRegularSize() {
+    public String getRegularSize() {
         return regularSize;
     }
 
-    public DuckModel withRegularSize(Dimension regularSize) {
+    public DuckModel withRegularSize(String regularSize) {
         this.regularSize = regularSize;
         return this;
     }
