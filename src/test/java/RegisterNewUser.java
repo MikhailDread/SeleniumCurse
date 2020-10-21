@@ -41,7 +41,6 @@ public class RegisterNewUser {
             selectZone.selectByValue("HI");
             String email = randomEmail();
             driver.findElement(By.cssSelector("input[name=email]")).sendKeys(email);
-            Thread.sleep(2000);
             driver.findElement(By.cssSelector("input[name=phone]")).sendKeys("12345");
             driver.findElement(By.cssSelector("input[name=password]")).sendKeys("test111");
             driver.findElement(By.cssSelector("input[name=confirmed_password]")).sendKeys("test111");
