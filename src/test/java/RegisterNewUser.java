@@ -40,7 +40,7 @@ public class RegisterNewUser {
             Select selectZone=new Select(driver.findElement(By.cssSelector("select[name='zone_code']")));
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
             selectZone.selectByValue("HI");
-            driver.findElement(By.cssSelector("input[name=email]")).sendKeys("Qtest5656@yandex.ru");
+            driver.findElement(By.cssSelector("input[name=email]")).sendKeys("Qtest" + randomEmail() + "@yandex.ru");
             driver.findElement(By.cssSelector("input[name=phone]")).sendKeys("12345");
             driver.findElement(By.cssSelector("input[name=password]")).sendKeys("test111");
             driver.findElement(By.cssSelector("input[name=confirmed_password]")).sendKeys("test111");
@@ -51,6 +51,11 @@ public class RegisterNewUser {
             driver.findElement(By.cssSelector("button[value=Login]")).click();
             driver.findElement(By.cssSelector("td.account li:last-child a")).click();
 
+        }
+
+        public static int randomEmail(){
+            int r = (int) (Math.random() * 100);
+            return r;
         }
 
         @AfterClass(alwaysRun = true)
