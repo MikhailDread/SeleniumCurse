@@ -38,24 +38,26 @@ public class RegisterNewUser {
             Select selectCountry = new Select(driver.findElement(By.cssSelector("select[name='country_code']")));
             selectCountry.selectByValue("US");
             Select selectZone=new Select(driver.findElement(By.cssSelector("select[name='zone_code']")));
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
             selectZone.selectByValue("HI");
-            driver.findElement(By.cssSelector("input[name=email]")).sendKeys("Qtest" + randomEmail() + "@yandex.ru");
+            String email = randomEmail();
+            driver.findElement(By.cssSelector("input[name=email]")).sendKeys(email);
+            Thread.sleep(2000);
             driver.findElement(By.cssSelector("input[name=phone]")).sendKeys("12345");
             driver.findElement(By.cssSelector("input[name=password]")).sendKeys("test111");
             driver.findElement(By.cssSelector("input[name=confirmed_password]")).sendKeys("test111");
             driver.findElement(By.cssSelector("button[name=create_account]")).click();
             driver.findElement(By.cssSelector("td.account li:last-child a")).click();
-            driver.findElement(By.cssSelector("input[name=email]")).sendKeys("Qtest5656@yandex.ru");
+            driver.findElement(By.cssSelector("input[name=email]")).sendKeys(email);
             driver.findElement(By.cssSelector("input[name=password]")).sendKeys("test111");
             driver.findElement(By.cssSelector("button[value=Login]")).click();
             driver.findElement(By.cssSelector("td.account li:last-child a")).click();
 
         }
 
-        public static int randomEmail(){
+        public static String randomEmail(){
             int r = (int) (Math.random() * 100);
-            return r;
+            String e = "Qtest" + r + "@yandex.ru";
+            return e;
         }
 
         @AfterClass(alwaysRun = true)
