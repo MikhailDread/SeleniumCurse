@@ -42,8 +42,8 @@ public class AddNewGoods {
         driver.findElement(By.cssSelector("[name=quantity]")).sendKeys("20");
         driver.findElement(By.cssSelector("div.input-wrapper tr:nth-child(4)")).click();
         new Select(driver.findElement(By.xpath("//select[@name='sold_out_status_id']"))).selectByValue("2");
-        //File file = new File("./src/test/resources/box.jpg");
-        //driver.findElement(By.cssSelector("input [name='new_images[]']")).sendKeys(file.getAbsolutePath());
+        File file = new File("./src/test/resources/box.jpg");
+        driver.findElement(By.cssSelector("input [name='new_images[]']")).sendKeys(file.getAbsolutePath());
         WebElement datepickerFrom = driver.findElement(By.cssSelector("input[name='date_valid_from']"));
         datepickerFrom.sendKeys(Keys.HOME+"30082017");
         wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.cssSelector("input[name='date_valid_to']"))));
